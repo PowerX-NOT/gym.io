@@ -3,12 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta http-equiv="Content-Security-Policy" content="img-src 'self' data: https://* http://*; default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://*;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlexTrack - Gym Management System</title>
+    <script>
+      // Check if a redirect is stored in sessionStorage
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          // Extract the path from the full URL
+          var url = new URL(redirect);
+          var path = url.pathname.substring(1); // Remove leading slash
+          
+          // Redirect to the hash-based route
+          if (path) {
+            history.replaceState(null, null, location.pathname + '#/' + path);
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>

@@ -8,6 +8,13 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   base: '/gym.io/',  // Replace with your repository name
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
   server: {
     headers: {
       'Content-Security-Policy': "img-src 'self' data: https://* http://*; default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://*;"
