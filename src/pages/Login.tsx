@@ -102,14 +102,12 @@ const Login: React.FC = () => {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  Demo credentials
                 </span>
               </div>
             </div>
 
             <div className="mt-6">
               <p className="text-center text-xs text-gray-600">
-                Email: admin@flextrack.com | Password: password123
               </p>
             </div>
           </div>
