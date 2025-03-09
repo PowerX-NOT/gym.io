@@ -24,10 +24,15 @@ jobs:
           node-version: 'latest'
           cache: 'npm'
 
-      - name: Create .env file
+      - name: Create .env file if secrets exist
         run: |
-          echo "VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}" >> .env
-          echo "VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}" >> .env
+          if [ -n "${{ secrets.VITE_SUPABASE_URL }}" ] && [ -n "${{ secrets.VITE_SUPABASE_ANON_KEY }}" ]; then
+            echo "✅ Secrets found. Creating .env file..."
+            echo "VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}" >> .env
+            echo "VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}" >> .env
+          else
+            echo "⚠️ Secrets not found. Skipping .env file creation."
+          fi
 
       - name: Install dependencies
         run: npm install
@@ -51,4 +56,3 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
-
