@@ -27,6 +27,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (user) {
+      navigate('/dashboard');
+    } else {
+      navigate('/');
+    }
+  };
+
   if (!user) {
     return <>{children}</>;
   }
@@ -37,10 +46,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64 bg-gray-900">
           <div className="flex items-center justify-center h-16 bg-gray-800">
-            <Link to="/" className="flex items-center">
+            <a href="#" onClick={handleLogoClick} className="flex items-center">
               <Dumbbell className="h-8 w-8 text-orange-500" />
               <span className="ml-2 text-xl font-bold text-white">FlexTrack</span>
-            </Link>
+            </a>
           </div>
           <div className="flex flex-col flex-grow px-4 mt-5">
             <nav className="flex-1 space-y-2">
@@ -93,10 +102,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       {/* Mobile menu button */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-10 bg-gray-900 flex items-center justify-between p-4">
-        <Link to="/" className="flex items-center">
+        <a href="#" onClick={handleLogoClick} className="flex items-center">
           <Dumbbell className="h-6 w-6 text-orange-500" />
           <span className="ml-2 text-lg font-bold text-white">FlexTrack</span>
-        </Link>
+        </a>
         <button
           onClick={toggleMobileMenu}
           className="text-gray-300 hover:text-white focus:outline-none"
