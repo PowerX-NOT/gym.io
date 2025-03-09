@@ -236,7 +236,7 @@ const CustomerDetail: React.FC = () => {
                         {formatDisplayDate(payment.payment_date)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        ${payment.amount}
+                        ₹{payment.amount}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {payment.membership_plan}
