@@ -34,8 +34,8 @@ FlexTrack is a modern, responsive web application designed to help gym owners ef
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/flextrack.git
-   cd flextrack
+   git clone https://github.com/PowerX-NOT/gym.io.git
+   cd gym.io
    ```
 
 2. Install dependencies:
